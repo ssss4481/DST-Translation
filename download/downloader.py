@@ -14,7 +14,7 @@ def extract_all_worksheet_as_list():
         if worksheet.title in ["Discussion", "LUT", "mods", "梗&由來"]: #skip Discussion, LUT, mods, 梗&由來
             continue
         new_worksheet = worksheet.get_all_values()
-        assert(new_worksheet)
+        assert new_worksheet != None
         output.append(new_worksheet[2:])
     return output
 #The output of above function will be list_of_all_worksheets in the next two function.
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     #list_of_all_dict_of_worksheets = build_dict_of_worksheets()
     #print(list_of_all_dict_of_worksheets[0]["STRINGS.ACTIONS.DECORATEVASE"])
     whole_dict = build_whole_dict()
-    print(whole_dict["STRINGS.ACTIONS.DECORATEVASE"])
+    print(whole_dict["STRINGS.CHARACTERS.GENERIC.DESCRIBE.TROPHYSCALE_OVERSIZEDVEGGIES.HAS_ITEM"])
 
 
 
