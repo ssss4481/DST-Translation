@@ -10,13 +10,12 @@ def extract_all_worksheet_as_list():
     sh = gc.open("DST正體中文翻譯")
     worksheet_list = sh.worksheets()
     output = []
-    for i in range(0, len(worksheet_list)):
-        if(i in [0, 6, 23, 24]): #skip Discussion, LUT, mods, 梗&由來
+    for worksheet in worksheet_list:
+        if worksheet.title in ["Discussion", "LUT", "mods", "梗&由來"]: #skip Discussion, LUT, mods, 梗&由來
             continue
-        new_worksheet = worksheet_list[i].get_all_values()
-        del new_worksheet[0]
-        del new_worksheet[0]
-        output.append(new_worksheet)
+        new_worksheet = worksheet.get_all_values()
+        assert(new_worksheet)
+        output.append(new_worksheet[2:])
     return output
 #The output of above function will be list_of_all_worksheets in the next two function.
 #list_of_all_worksheets is a list of lists. Elements in this list are the data of all worksheets except "Discussion".
